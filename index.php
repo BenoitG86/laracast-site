@@ -8,23 +8,57 @@
 </head>
 
 <body>
-    <h1>
-        <?php
-        $greetings = [
-            'Salutations',
-            'Coucou',
-            'Hello',
-            'Alors, j\'aime ou j\'aime pas ?',
-            'Bienvenido',
-            'Wilkomen',
-            'Bienvenue',
-            'ようこそ'
-        ];
-        $count = count($greetings) -1;
-        $random = random_int(0, $count);
-        echo $greetings[$random] . ' ' . 'le monde.';
-        ?>
-    </h1>
+    <?php
+    $books = [
+        [
+            'title' => '1984',
+            'author' => 'Jor Jor Well',
+            'releaseYear' => 1949,
+            'purchaseUrl' => 'http://example.com'
+        ],
+        [
+            'title' => 'Le Rouge et le Noir',
+            'author' => 'Stendal',
+            'releaseYear' => 1830,
+            'purchaseUrl' => 'http://example.com'
+        ],
+        [
+            'title' => 'Project Hail Mary',
+            'author' => 'Andy Weir',
+            'releaseYear' => 2021,
+            'purchaseUrl' => 'http://example.com'
+        ],
+        [
+            'title' => 'The Martian',
+            'author' => 'Andy Weir',
+            'releaseYear' => 2011,
+            'purchaseUrl' => 'http://example.com'
+        ]
+    ];
+
+    function filterByAuthor() {
+    
+    }
+
+
+    ?>
+
+    <h1>Livres</h1>
+
+    <ul>
+        <?php foreach ($books as $book): ?>
+            <?php if ($book['author'] === 'Andy Weir'): ?>
+                <li>
+                    <a href="<?= $book['purchaseUrl']; ?>">
+                        <?= $book['title'] . ' écrit par ' . $book['author'] ?>
+                    </a>
+                <?php endif; ?>
+
+            </li>
+        <?php endforeach; ?>
+
+    </ul>
+
 </body>
 
 </html>
