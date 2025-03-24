@@ -36,27 +36,36 @@
         ]
     ];
 
-    function filterByAuthor() {
-    
-    }
+    // Logique similaire à celle utilisé dans array_filter de PHP
 
+    // function filter($items, $fn)
+    // {
+    //     $filteredItems = [];
+
+    //     foreach ($items as $item) {
+    //         if ($fn($item)) {
+    //             $filteredItems[] = $item;
+    //         }
+    //     }
+    //     return $filteredItems;
+    // }
+
+    $filteredBooks = array_filter($books, function ($book) {
+        return $book['releaseYear'] >= 2000;
+    });
 
     ?>
 
     <h1>Livres</h1>
 
     <ul>
-        <?php foreach ($books as $book): ?>
-            <?php if ($book['author'] === 'Andy Weir'): ?>
-                <li>
-                    <a href="<?= $book['purchaseUrl']; ?>">
-                        <?= $book['title'] . ' écrit par ' . $book['author'] ?>
-                    </a>
-                <?php endif; ?>
-
+        <?php foreach ($filteredBooks as $book): ?>
+            <li>
+                <a href="<?= $book['purchaseUrl']; ?>">
+                    <?= $book['title'] . ' écrit par ' . $book['author'] . ' publié en ' . $book['releaseYear'] ?>
+                </a>
             </li>
         <?php endforeach; ?>
-
     </ul>
 
 </body>
